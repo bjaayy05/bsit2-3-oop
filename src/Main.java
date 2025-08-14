@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Get Student Information
+        
         System.out.println("=== Enter Student Information ===");
 
         System.out.print("Student ID: ");
@@ -22,7 +22,7 @@ public class Main {
         System.out.print("Section: ");
         String section = scanner.nextLine();
 
-        // Display Student Information
+    
         System.out.println("\n=== STUDENT INFORMATION ===");
         System.out.println("Student ID: " + studentId);
         System.out.println("First Name: " + firstName);
@@ -30,7 +30,7 @@ public class Main {
         System.out.println("Course: " + course);
         System.out.println("Section: " + section);
 
-        // Get Scores
+     
         System.out.println("\n=== Enter Student Scores ===");
 
         System.out.print("Midterm Exam Score: ");
@@ -45,14 +45,13 @@ public class Main {
         System.out.print("Attendance Score: ");
         int attendance = scanner.nextInt();
 
-        // Calculate total and average
+     
         int total = midtermExam + finalExam + project + attendance;
         int average = total / 4;
 
-        // Determine remarks
+   
         String remarks = (average < 75) ? "FAILED" : "PASSED";
 
-        // Display Scores and Remarks
         System.out.println("\n=== STUDENT SCORES ===");
         System.out.println("Midterm Exam: " + midtermExam);
         System.out.println("Final Exam: " + finalExam);

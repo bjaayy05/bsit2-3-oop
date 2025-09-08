@@ -1,1 +1,64 @@
+public class Main {
+    public static void main(String[] args) {
+        try {
 
+            Order order1 = new Order("Alice Johnson");
+            Order order2 = new Order("Bob Smith");
+            Order order3 = new Order("Charlie Brown");
+
+
+            order1.addItem("Pizza", 12.99);
+            order2.addItem("Burger", 8.50);
+            order2.addItem("Fries", 3.25);
+            order3.addMultipleItems(new String[]{"Pizza", "Pasta", "Salad"}, 10.99, 8.99, 5.50);
+
+
+            try {
+                order1.addItem("Soda", -5.00); // Invalid price
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+            try {
+                order2.addItem("", 4.50); // Empty item name
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+            try {
+                order3.addMultipleItems(new String[]{"Tacos", "Burrito"}, 7.00); // Mismatched lengths
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+
+            System.out.println(order1.displayOrder());
+            System.out.println(order2.displayOrder());
+            System.out.println(order3.displayOrder());
+
+
+            System.out.println("Total orders created: " + Order.getTotalOrders());
+
+
+            Order highestOrder = findHighestOrder(order1, order2, order3);
+            System.out.println("Order with highest total: " + highestOrder.displayOrder());
+
+        } catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
+        }
+    }
+
+
+    private static Order findHighestOrder(Order... orders) {
+        Order highestOrder = null;
+        double highestAmount = 0.0;
+
+        for (Order order : orders) {
+            if (order.getTotalAmount() > highestAmount) {
+                highestAmount = order.getTotalAmount();
+                highestOrder = order;
+            }
+        }
+        return highestOrder;
+    }
+}
